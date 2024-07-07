@@ -22,9 +22,17 @@ const loginUser = async (req, res) => {
         "password": password
     });
     res.status(200).send({message: 'test'});
+};
+
+const getAllUsers = async (req, res) => {
+    const users = await User.find();
+    res.status(200).send({
+        users: users
+    })
 }
 
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    getAllUsers
 }

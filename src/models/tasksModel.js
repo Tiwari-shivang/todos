@@ -11,10 +11,11 @@ const TasksModel = new Schema({
     },
     isPriority: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     },
     dueDate: {
-        type: Date,
+        type: String,
         required: true
     },
     isReminder: {
@@ -26,18 +27,24 @@ const TasksModel = new Schema({
         required: true
     },
     isCompleted: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     createdOn: {
-        type: Date,
-        required: true
+        type: String,
+        required: true,
+        default: Date.now
     },
     modifiedOn: {
-        type: Date
+        type: String
     },
     reminderOn: {
-        type: Date,
+        type: String,
     },
+    createdBy: {
+        type: String,
+        required: true
+    }
 });
 
 const Task = mongoose.model('Task', TasksModel);
