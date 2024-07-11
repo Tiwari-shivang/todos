@@ -11,40 +11,40 @@ const TasksModel = new Schema({
     },
     isPriority: {
         type: Boolean,
-        required: true,
-        default: false
+        default: false,
     },
     dueDate: {
-        type: String,
-        required: true
+        type: Date,
+        default: () => new Date(new Date() + 60 * 60 * 1000)
     },
     isReminder: {
         type: Boolean,
-        required: true
+        default: false
     },
     category: {
         type: String,
-        required: true
+        default: 'WORK'
     },
     isCompleted: {
         type: Boolean,
         default: false
     },
     createdOn: {
-        type: String,
-        required: true,
+        type: Date,
         default: Date.now
     },
     modifiedOn: {
-        type: String
+        type: Date,
+        default: Date.now
     },
     reminderOn: {
-        type: String,
+        type: Date,
+        default: () => new Date(new Date() + 60 * 60 * 1000)
     },
     createdBy: {
         type: String,
         required: true
-    }
+    },
 });
 
 const Task = mongoose.model('Task', TasksModel);
